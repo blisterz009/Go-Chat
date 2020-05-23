@@ -8,6 +8,8 @@ import (
 	"net"
 	"os"
 	"strings"
+
+	"github.com/gookit/color"
 )
 
 func logFatal(err error) {
@@ -22,7 +24,7 @@ func main() {
 
 	defer connection.Close()
 
-	fmt.Println("Enter your username: ")
+	color.Cyan.Println("Enter your username: ")
 
 	reader := bufio.NewReader(os.Stdin)
 	username, err := reader.ReadString('\n')
@@ -33,7 +35,7 @@ func main() {
 
 	welcomeMsg := fmt.Sprintf("Welcome %s, to the chat, say hi \n", username)
 
-	fmt.Println(welcomeMsg)
+	color.Green.Println(welcomeMsg)
 
 	go read(connection)
 
@@ -49,8 +51,8 @@ func read(connection net.Conn) {
 			fmt.Sprintf("Connection closed.\n")
 			os.Exit(0)
 		}
-		fmt.Println(message)
-		fmt.Println("=========================================")
+		color.Blue.Println(message)
+		color.Yellow.Println("=========================================")
 	}
 }
 func write(connection net.Conn, username string) {
