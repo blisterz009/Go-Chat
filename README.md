@@ -1,5 +1,5 @@
 # Go-Chat
-A simple chat web app written in Go
+A simple chat application written in Go
 
 ## Usage
 ### Server
